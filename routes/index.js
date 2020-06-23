@@ -1,5 +1,8 @@
 const express = require('express')
 const router = express.Router()
+const { ensureAuth, ensureGuest } = require('../middleware/auth')
+
+const Dream = require('../models/Dream')
 
 // @desc landing page
 // @route GET /
@@ -17,8 +20,20 @@ router.get('/login', (req, res) => {
 
 // @desc dream list page
 // @route GET /dreamlist
-router.get('/dreamlist', (req, res) => {
-    res.render('dreamList')
+router.get('/dreamlist', ensureAuth, async (req, res) => {
+    try {
+        const dreams = await Dream.find({ user: req.user.id }).lean()
+        res.render('dreamList', {
+            layout: 'dreamlist',
+            name: req.user.firstName,
+            dreams
+        })
+    } catch (err) {
+        console.error(err)
+        res.render('error/500')
+
+    }
+
 })
 
 
