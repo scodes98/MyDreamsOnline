@@ -1,0 +1,31 @@
+<h3>Edit Dream</h3>
+<div class="row">
+    <form action="/dreams/{{dream._id}}" method="POST" class="col s12">
+        <input type="hidden" name="_method" value="PUT">
+        <div class="row">
+            <div class="input-field">
+                <input type="text" id="title" name="title" value="{{dream.title}}">
+                <label for="title">Title</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field">
+                <select id="status" name="status">
+                    {{#select dream.status}}
+                    <option value="public" selected>Public</option>
+                    <option value="private">Private</option>
+                    {{/select}}
+                </select>
+                <label for="status">Status</label>
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <input type="submit" value="Save" class="btn">
+            <a href="/dreamlist" class="btn orange">Cancel</a>
+        </div>
+    </form>
+</div>
