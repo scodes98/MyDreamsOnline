@@ -19,7 +19,25 @@
                 </select>
                 <label for="status">Status</label>
             </div>
+
         </div>
+
+        <div class="row">
+            <div class="input-field">
+                <select id="state" name="state">
+                    {{#select dream.state}}
+                    <option value="pending" selected>Pending</option>
+                    <option value="on it">On it</option>
+                    <option value="done">Done</option>
+
+                    {{/select}}
+                </select>
+                <label for="state">Dream status</label>
+            </div>
+
+        </div>
+
+
 
 
 

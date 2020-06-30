@@ -7,6 +7,7 @@
             <th>Title</th>
             <th>Date</th>
             <th>Status</th>
+            <th>State</th>
             <th></th>
         </tr>
     </thead>
@@ -16,6 +17,11 @@
             <td><a href="/dreams/{{_id}}">{{title}}</a></td>
             <td>{{formatDate createdAt 'MMMM Do YYYY, h:mm:ss a'}}</td>
             <td><span class="dash-status">{{status}}</span></td>
+            <td><span>{{state}}</span></td>
+
+
+
+
             <td>
                 <a href="/dreams/edit/{{_id}}" class="btn btn-float">
                     <i class="fas fa-edit"></i>

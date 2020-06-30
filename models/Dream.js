@@ -19,6 +19,11 @@ const DreamSchema = new mongoose.Schema({
         default: 'public',
         enum: ['public', 'private'],
     },
+    state: {
+        type: String,
+        default: 'pending',
+        enum: ['pending', 'on it', 'done'],
+    },
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
