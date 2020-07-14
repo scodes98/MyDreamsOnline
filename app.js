@@ -42,7 +42,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 // Handlebar helpers
-const { formatDate, editIcon, select } = require('./helpers/hbs')
+const { formatDate, select } = require('./helpers/hbs')
 
 // Handlebars
 app.engine(
@@ -50,12 +50,8 @@ app.engine(
     exphbs({
         helpers: {
             formatDate,
-            editIcon,
             select,
-
-
         },
-
         defaultLayout: 'main',
         extname: '.hbs',
     })
@@ -83,16 +79,16 @@ app.use(function (req, res, next) {
 })
 
 //Static
-app.use(express.static(path.join(__dirname, 'public')))
+// app.use(express.static(path.join(__dirname, 'public')))
+
+app.use('/static', express.static('public'));
+
 
 //Routes
 app.use('/', require('./routes/index'))
 app.use('/auth', require('./routes/auth'))
 app.use('/dreams', require('./routes/dreams'))
 app.use('/explore', require('./routes/explore'))
-
-
-
 
 const PORT = process.env.PORT || 3000
 

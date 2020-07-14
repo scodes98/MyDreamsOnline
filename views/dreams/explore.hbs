@@ -1,28 +1,96 @@
-<div class="row">
-    {{#each dreams}}
-    <div class="col s12 m4">
-        <div class="card">
-            {{!-- <div class="card-image">
-                {{{editIcon user ../user _id}}}
-            </div> --}}
-            <div class="card-content center-align">
-                <h5>{{title}}</h5>
-                <h4>{{formatDate createdAt 'MMMM Do YYYY, h:mm:ss a'}}</h4>
-                <br>
-                <div class="chip">
-                    {{!-- <img src="{{user.image}}" alt=""> --}}
-                    <a href="/dreams/user/{{user._id}}">{{user.displayName}}</a>
+<!--==========================
+    Header
+  ============================-->
+<header id="header">
+    <div class="container">
+        <div id="logo" class="pull-left">
+            <h1><a href="/explore">explore <span>dreams</span></a></h1>
+        </div>
+        <nav id="nav-menu-container">
+            <ul class="nav-menu">
+                <li><a href="/">Home</a></li>
+                <li class="button"><a href="/login">LOG IN</a></li>
+            </ul>
+        </nav><!-- #nav-menu-container -->
+    </div>
+</header><!-- #header -->
+
+<!--==========================
+    Explore Dream Cards
+  ============================-->
+<div id="page-container">
+
+    {{#if dreams}}
+
+    <section id="dream-card" class=" wow fadeInUp">
+        <div class="container" style="padding-bottom: 3rem;">
+            <div class="row justify-content-md-center">
+
+                {{#each dreams}}
+
+                <div class="col-md-auto col-lg-10 mt-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="card-text">{{title}}</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted" style="text-transform: uppercase;">{{user.displayName}}</small>
+                            <small class="text-muted float-right" style="text-transform: uppercase;">{{state}}</small>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="center-align">
-                <p>{{state}}</p>
-            </div>
-            <div class="card-action center-align">
-                <a href="/dreams/{{_id}}" class="btn grey">Read More</a>
+
+                {{/each}}
+
+            </div><br>
+        </div>
+
+    </section>
+
+    {{else}}
+
+    {{!-- No dreams to explore Modal --}}
+    <div class="modal fade" id="noDreamExplore">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">No Dreams...</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    There are no Dreams to show.<br><br>
+                    Please LOGIN to create your dream feed.
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button style="background-color: #d6052b;color:white" type="button" class="btn"
+                        data-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
     </div>
-    {{else}}
-    <p>No dreams to display</p>
-    {{/each}}
+
+    {{/if}}
+
+    <!--==========================
+    Footer
+  ============================-->
+    <footer id="footer-list">
+        <div class="container">
+            <div class="credits">
+                For <span>Dreamers</span> By <span>Dreamers</span>
+            </div>
+            <div class="copyright">
+                &copy; Copyright <strong>MyDreams</strong>. All Rights Reserved
+            </div>
+        </div>
+    </footer><!-- #footer -->
+
 </div>
+
+<!--==========================
+    Back to top
+  ============================-->
+<a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>

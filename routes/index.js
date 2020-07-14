@@ -1,24 +1,22 @@
 const express = require('express')
 const router = express.Router()
-const { ensureAuth, ensureGuest } = require('../middleware/auth')
+const { ensureAuth } = require('../middleware/auth')
 
 const Dream = require('../models/Dream')
 
-// @desc landing page
+// @desc home page
 // @route GET /
 router.get('/', (req, res) => {
-    res.render('homepage')
+    res.render('home')
 })
 
 // @desc login page
 // @route GET /login
 router.get('/login', (req, res) => {
-    res.render('login', {
-        layout: 'login',
-    })
+    res.render('login')
 })
 
-// @desc dream list page
+// @desc dreamlist page
 // @route GET /dreamlist
 router.get('/dreamlist', ensureAuth, async (req, res) => {
     try {
@@ -31,11 +29,8 @@ router.get('/dreamlist', ensureAuth, async (req, res) => {
     } catch (err) {
         console.error(err)
         res.render('error/500')
-
     }
 
 })
-
-
 
 module.exports = router

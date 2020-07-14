@@ -3,8 +3,6 @@ const router = express.Router()
 const { ensureAuth } = require('../middleware/auth')
 const Dream = require('../models/Dream')
 
-
-
 // @desc    Show add page
 // @route   GET /dreams/add
 router.get('/add', ensureAuth, (req, res) => {
@@ -96,5 +94,6 @@ router.delete('/:id', ensureAuth, async (req, res) => {
         return res.render('error/500')
     }
 })
+
 
 module.exports = router

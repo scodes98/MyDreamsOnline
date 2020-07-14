@@ -1,49 +1,43 @@
-<h3>Edit Dream</h3>
-<div class="row">
-    <form action="/dreams/{{dream._id}}" method="POST" class="col s12">
-        <input type="hidden" name="_method" value="PUT">
-        <div class="row">
-            <div class="input-field">
-                <input type="text" id="title" name="title" value="{{dream.title}}">
-                <label for="title">Title</label>
-            </div>
-        </div>
+{{!-- Edit Dream Form --}}
 
-        <div class="row">
-            <div class="input-field">
-                <select id="status" name="status">
+
+<div class="container">
+    <div class="col-lg-8 mx-auto mt-5">
+
+        <form id="edit" action="/dreams/{{dream._id}}" method="POST" class="wow fadeInUp">
+            <h1 class="text-center">EDIT DREAM</h1>
+            <hr>
+            <input type="hidden" name="_method" value="PUT">
+            <div class="form-group">
+                <label for="dreamTitle">Dream title</label>
+                <input type="text" class="form-control" id="title" name="title" value="{{dream.title}}" required>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="status">Privacy status</label>
+                <select class="form-control" id="status" name="status">
                     {{#select dream.status}}
                     <option value="public" selected>Public</option>
                     <option value="private">Private</option>
                     {{/select}}
                 </select>
-                <label for="status">Status</label>
+                <small id="" class="form-text text-muted">Public dreams will be visible to all.</small>
             </div>
-
-        </div>
-
-        <div class="row">
-            <div class="input-field">
-                <select id="state" name="state">
+            <br>
+            <div class="form-group">
+                <label for="state">Dream status</label>
+                <select class="form-control" id="state" name="state">
                     {{#select dream.state}}
                     <option value="pending" selected>Pending</option>
                     <option value="on it">On it</option>
                     <option value="done">Done</option>
-
                     {{/select}}
                 </select>
-                <label for="state">Dream status</label>
             </div>
+            <br>
+            <button type="submit" class="btn btn-primary">Save</button>
+            <a href="/dreamlist" class="btn btn-secondary">Cancel</a>
+        </form>
 
-        </div>
-
-
-
-
-
-        <div class="row">
-            <input type="submit" value="Save" class="btn">
-            <a href="/dreamlist" class="btn orange">Cancel</a>
-        </div>
-    </form>
+    </div>
 </div>
