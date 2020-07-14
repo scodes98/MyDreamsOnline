@@ -21,7 +21,7 @@ router.get('/login', (req, res) => {
 router.get('/dreamlist', ensureAuth, async (req, res) => {
     try {
         const dreams = await Dream.find({ user: req.user.id }).lean()
-        res.render('dreamList', {
+        res.render('dreamlist', {
             layout: 'dreamlist',
             name: req.user.firstName,
             dreams
