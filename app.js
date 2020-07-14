@@ -10,7 +10,6 @@ const session = require('express-session')
 const MongoStore = require('connect-mongo')(session)
 const connectDB = require('./config/db')
 
-testing
 
 // Load config
 dotenv.config({ path: './config/config.env' })
